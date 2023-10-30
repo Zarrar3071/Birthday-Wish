@@ -9,10 +9,9 @@
             text-align: center;
             margin: 0;
             padding: 0;
-            background: linear-gradient(45deg, #FFD700, #FF69B4, #87CEFA, #FFA500);
+            background: linear-gradient(45deg, #FFD700, #FF69B4, #87CEFA);
             background-size: 300% 300%;
             animation: gradientBackground 3s ease infinite;
-            transition: background 1s ease;
         }
 
         @keyframes gradientBackground {
@@ -36,23 +35,50 @@
             margin: 0 auto;
             margin-top: 50px;
             box-shadow: 0px 0px 20px #00ff04, 0px 0px 10px #e7ff00, 0px 0px 30px blue;
+            position: relative;
         }
-        
+
+        /* Add an overlay for the foggy effect */
+        .fog-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.5); /* Adjust the opacity as needed */
+        }
+
+        .card img {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            max-width: 50px;
+            border-radius: 50%;
+            transform: scale(0.8);
+            transition: transform 0.5s ease;
+        }
+
+        .card img:hover {
+            transform: scale(1);
+            transition: transform 0.5s ease;
+        }
     </style>
 </head>
 <body>
     <div class="card">
+        <div class="fog-overlay"></div> <!-- Foggy overlay -->
         <h2>Birthday Greeting</h2>
         <p id="nameAnimation">Dear <span id="animatedName"></span>,</p>
         <p>On this special day, I want to wish you a very happy birthday!</p>
         <p>May your day be filled with joy, laughter, and unforgettable moments.</p>
         <p>"Happy Birthday! </p>
         <p>Wishing you a fantastic day,"</p>
-      <p>🍰 🎂 🍰</p>
-      <audio controls>
-        <source src="Shayad - Love Aaj Kal 128 Kbps.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
+        <p>🍰 🎂 🍰</p>
+        <audio controls>
+            <source src="Shayad - Love Aaj Kal 128 Kbps.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+        <img src="WhatsApp Image 2023-10-30 at 12.01.10 AM.jpeg" alt="Your Friend" />
     </div>
 
     <script>
@@ -68,7 +94,7 @@
                 animatedName.textContent = '';
                 index = 0;
             }
-            setTimeout(animateName, 200); // Adjust the time (in milliseconds) between displaying each letter
+            setTimeout(animateName, 200);
         }
 
         animateName();
