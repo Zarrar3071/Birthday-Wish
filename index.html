@@ -9,13 +9,14 @@
             text-align: center;
             margin: 0;
             padding: 0;
-            background: linear-gradient(45deg, #FFD700, #FF69B4, #87CEFA, #FFA500);
+            /* background: linear-gradient(45deg, #FFD700, #FF69B4, #87CEFA, #FFA500);
             background-size: 300% 300%;
             animation: gradientBackground 8s ease infinite;
-            transition: background 1s ease;
+            transition: background 1s ease; */
         }
 
-        @keyframes gradientBackground {
+
+        /* @keyframes gradientBackground {
             0% {
                 background-position: 0% 50%;
             }
@@ -25,7 +26,7 @@
             100% {
                 background-position: 0% 50%;
             }
-        }
+        } */
 
         /* Add styles for the flower image */
         .flower-image {
@@ -75,10 +76,59 @@
             margin: 0 auto;
             margin-top: 50px;
             box-shadow: 0px 0px 20px #00ff04, 0px 0px 10px #e7ff00, 0px 0px 30px blue;
+
+            background: linear-gradient(45deg, #FFD700, #FF69B4, #87CEFA, #FFA500);
+            background-size: 300% 300%;
+            animation: gradientBackground 8s ease infinite;
+            transition: background 1s ease;
+        }
+        @keyframes gradientBackground {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
         }
 
         .password-container {
             display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: #ffffff;
+            border-radius: 10px;
+            padding: 20px;
+            width: 60%;
+            margin: 0 auto;
+            margin-top: 50px;
+            box-shadow: 0px 0px 20px #3498db;
+        }
+
+        .password-input {
+            font-size: 16px;
+            padding: 10px;
+            margin: 10px;
+            border: 2px solid #3498db;
+            border-radius: 5px;
+            width: 100%;
+        }
+
+        .password-button {
+            background-color: #3498db;
+            color: #fff;
+            font-size: 16px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .password-button:hover {
+            background-color: #0c68d3;
         }
     </style>
 </head>
@@ -87,7 +137,7 @@
         <div class="loader-text">LOADING JUST FOR U</div>
     </div>
     <div class="card" id="birthdayCard">
-        <img src="WhatsApp Image 2023-10-30 at 12.01.10 AM.jpeg" alt="Flower" class="flower-image"> <!-- Add a flower image -->
+        <img src="" alt="" class=""> <!-- Add a flower image -->
         <h2>Birthday Greeting</h2>
         <p id="nameAnimation">Dear <span id="animatedName"></span>,</p>
         <p>On this special day, I want to wish you a very happy birthday!</p>
@@ -102,8 +152,8 @@
     </div>
     <div class="password-container" id="passwordContainer">
         <p>Enter the password to view the card:</p>
-        <input type="password" id="passwordInput">
-        <button onclick="checkPassword()">Submit</button>
+        <input type="password" id="passwordInput" class="password-input">
+        <button onclick="checkPassword()" class="password-button">Submit</button>
         <p id="message"></p>
     </div>
 
