@@ -78,21 +78,22 @@
         }
 
         .password-container {
-            display: none;
-/*             position: relative; */
             position: fixed;
             opacity: 0.8;
-            z-index: 9999; /* Ensure password div is above the loader */
+            z-index: 9999;
             background: rgba(255, 255, 255, 0.9);
             border-radius: 10px;
             padding: 20px;
             max-width: 60%;
             margin: 0 auto;
-            margin-top: 10%; /* Adjust the top margin to center vertically */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             box-shadow: 19px 24px 21px 4px #3498db;
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            display: none; /* Initially hide the password container */
         }
 
         .password-input {
@@ -133,8 +134,8 @@
         <p>"Happy Birthday! </p>
         <p>Wishing you a fantastic day,"</p>
         <p>🍰 🎂 🍰</p>
-        <audio controls>
-            <source src="Shayad - Love Aaj Kal 128 Kbps.mp3" type="audio/mpeg">
+        <audio controls >
+            <source src="Shayad - Love Aaj Kal 128 Kbps.mp3" type="audio/mpeg" >
             Your browser does not support the audio element.
         </audio>
     </div>
@@ -169,10 +170,11 @@
 
         animateName();
 
+       
         setTimeout(() => {
             loader.style.display = 'none';
             passwordContainer.style.display = 'block';
-        }, 5000); // Show the password input after 5 seconds
+        }, 5000);
 
         function checkPassword() {
             const enteredPassword = passwordInput.value.trim();
