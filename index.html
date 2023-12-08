@@ -14,18 +14,174 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-        
-        }
-    h1{
-        color : white;
-        margin-top: -250px;
-    }
-            
 
-        
-       
+        }
+        .loader-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .loader {
+            width: 50px;
+            height: 50px;
+            border: 5px solid transparent;
+            border-top: 5px solid #3498db;
+            border-radius: 50%;
+            animation: spin 2s linear infinite;
+            margin-top: -200px;
+
+
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .loading-text {
+            font-size: 24px;
+            margin-top: 20px;
+            color: #ffffff;
+        }
+        .card {
+            display: none;
+            background-color:#b6b4b4;
+            background-image: url();
+            border: 10px solid transparent;
+            border-radius: 10px;
+            padding: 20px;
+            max-width: 70%;
+            margin-top: -130px;
+            box-shadow: 0px 0px 13px 11px white;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeSlideIn 5s ease forwards;
+
+        }
+        @keyframes fadeSlideIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .password-container {
+            position: fixed;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            padding: 20px;
+            width: 80%; 
+            margin: 0 auto;
+            top: 35%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 19px 24px 21px 4px #3498db;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            display: none;
+        }
+
+        .password-input {
+            font-size: 16px;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 2px solid #3498db;
+            border-radius: 5px;
+            width: 90%; 
+            outline: none;
+        }
+
+        .password-button {
+            background-color: #3498db;
+            color: #fff;
+            font-size: 16px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .password-button:hover {
+            background-color: #0c68d3;
+        }
+        audio{
+            display : flex;
+            width:100%;
+
+        }
+
+
     </style>
 </head>
 <body>
-    <h1>  ...  </h1>
+    <div class="loader-container" id="loader">
+        <div class="loader"></div>
+        <div class="loading-text">Just a Moment &#129392</div>
+    </div>
+    <div class="card" id="birthdayCard">
+        <h2>Birthday Greeting</h2>
+        <p id="nameAnimation">Dear <span id="animatedName"></span>,</p>
+        <p>On this special day.. I want to wish you a very happy birthday..</p>
+        <p>I feel a deep connection with you that goes beyond words...</p>
+        <p>You are the missing piece that completes the puzzle of my heart.</p>
+        <p>Happy Birthday! &#129395 &#129395 </p>
+        <p>Wishing you a fantastic day..</p>
+        <p>🍰 🎂 🍰</p>
+        <audio controls >
+            <source src="Shayad - Love Aaj Kal 128 Kbps.mp3" type="audio/mpeg" >
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+    <div class="password-container" id="passwordContainer">
+        <p>Enter the Key to view the card:</p>
+        <input type="password" id="passwordInput" class="password-input">
+        <button onclick="checkPassword()" class="password-button">Submit</button>
+        <p id="message"></p>
+    </div>
+
+    <script>
+        // Show the initial loader
+        const loader = document.getElementById('loader');
+        const birthdayCard = document.getElementById('birthdayCard');
+        const passwordContainer = document.getElementById('passwordContainer');
+        const passwordInput = document.getElementById('passwordInput');
+        const message = document.getElementById('message');
+        const animatedName = document.getElementById('animatedName');
+        const name = "Maryam Riaz";
+        let index = 0;
+
+        function animateName() {
+            if (index < name.length) {
+                animatedName.textContent += name[index];
+                index++;
+            } else {
+                animatedName.textContent = '';
+                index = 0;
+            }
+            setTimeout(animateName, 200); 
+        }
+
+        animateName();
+
+
+        setTimeout(() => {
+            loader.style.display = 'none';
+            passwordContainer.style.display = 'block';
+        }, 5000);
+
+        function checkPassword() {
+            const enteredPassword = passwordInput.value.trim();
+            if (enteredPassword.toLowerCase() === 'maryam') {
+                passwordContainer.style.display = 'none';
+                birthdayCard.style.display = 'block';
+            } else if (enteredPassword === '') {
+                message.textContent = 'Password is required.';
+            } else {
+                message.textContent = 'Incorrect Key. Please try again or contact Zarrar .';
+            }
+        }
+    </script>
 </body>
+</html>
